@@ -1,0 +1,28 @@
+.container {
+    width: 750px;
+    margin: 0 auto;
+  }
+  
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .cart-table th,
+  .cart-table td {
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  
+  .cart-total {
+    text-align: right;
+    margin-top: 10px;
+  }
+  
+  .checkout-button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+  }
+  

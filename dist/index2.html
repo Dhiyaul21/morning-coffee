@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Coffee</title>
+
+        <!-- SWIPER -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+        <!-- Font Awesome CDN Link  -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+        <!-- Custom CSS FileLink  -->
+        <link rel="stylesheet" href="css/style2.css" />
+
+        <!-- Apline Js -->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <!-- App -->
+        <script src="js/app.js "></script>
+
+        <!-- Google Icon -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    </head>
+
+    <body>
+        <!-- HEADER -->
+        <header class="header">
+            <div id="menu-btn" class="fas fa-bars"></div>
+
+            <a href="#home" class="logo">Morning <span>Coffee</span> <i class="fas fa-mug-hot"></i></a>
+
+            <nav class="navbar" x-data>
+                <a href="#menu">menu</a>
+                <a href="member.html">Membership</a>
+                <a href="about.html">about us</a>
+                <a href="review.html">review</a>
+                <a href="cart.html" id="shopping-cart-button">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+                </a>
+            </nav>
+
+            <a href="#book" class="btn"><i class="fa-solid fa-user"></i></a>
+        </header>
+
+        <!-- HOME -->
+        <section class="home" id="home">
+            <div class="row">
+                <div class="content">
+                    <h3>fresh <span>coffee</span> in the morning</h3>
+                    <a href="#menu" class="btn">buy one now</a>
+                </div>
+
+                <div class="image">
+                    <img src="image/home-img-1.png" class="main-home-image" alt="" />
+                </div>
+            </div>
+        </section>
+
+        <!-- kategori -->
+        <div id="menu" class="kosong"></div>
+        <div class="container">
+            <h1 class="heading">our menu <span>all menu</span></h1>
+            <ul>
+                <div class="kotak">
+                    <!-- <div class="outletjdl">
+                    <h2>Morning point</h2>
+                    <div class="outlet1">
+                        <li><a href="#" class="tmbl1 pilih"><i class="fa-solid fa-circle-plus"></i> 25 Point</a></li>
+                    </div>
+                </div> -->
+                    <div class="outletjdl">
+                        <h2>Order dari outlet terdekat</h2>
+                        <div class="outlet1">
+                            <li>
+                                <a href="#" class=""><i class="fa-solid fa-shop"></i> Sumarekon Bogor</a>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="outletjdl">
+                        <h2>Ambil/Antar</h2>
+                        <div class="outlet1 outlet2">
+                            <li>
+                                <a href="#" class="tmbl1 pilih aa">Pick up <i class="fa-solid fa-person-walking"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="tmbl1 pilih aa">Delivery <i class="fa-solid fa-motorcycle"></i></a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+            <ul>
+                <div class="kateg">
+                    <li><a href="#" class="tmbl" type="button" data-name="promo">Promo</a></li>
+                    <li><a href="#" class="tmbl active" type="button" data-name="all" class="active">semua kategori</a></li>
+                    <li><a href="#" class="tmbl" type="button" data-name="kopi">kopi</a></li>
+                    <li><a href="#" class="tmbl" type="button" data-name="susu">susu</a></li>
+                    <li><a href="#" class="tmbl" type="button" data-name="teh">Teh</a></li>
+                    <li><a href="#" class="tmbl" type="button" data-name="makanan">ngemil</a></li>
+                </div>
+            </ul>
+        </div>
+
+        <!-- Menu -->
+        <div class="menu" x-data="products">
+            <template x-for="(item, index) in items" x-key="index">
+                <div class="item" data-name="kopi">
+                    <div class="badge">
+                        <p>new</p>
+                    </div>
+                    <nav>
+                        <a href="#" @click.prevent="$store.cart.add(item)">
+                            <span class="material-icons">add_shopping_cart </span>
+                        </a>
+                        <a href="#">
+                            <span class="material-icons">favorite</span>
+                        </a>
+                        <a href="#" class="item-detail-button">
+                            <span class="material-icons">visibility </span>
+                        </a>
+                    </nav>
+                    <div class="foto">
+                        <img :src="`image/produk/${item.img}`" :alt="item.name" />
+                    </div>
+                    <div class="text">
+                        <div class="bintang">
+                            <span class="material-icons active">star</span>
+                            <span class="material-icons active">star</span>
+                            <span class="material-icons active">star</span>
+                            <span class="material-icons active">star</span>
+                            <span class="material-icons">star_border</span>
+                        </div>
+                        <div class="nama">
+                            <h2 x-text="item.name"></h2>
+                        </div>
+                        <div class="price">
+                            <p><span x-text="rupiah(item.price)"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <!-- FOOTER -->
+        <section class="footer">
+            <div class="box-container">
+                <div class="box one">
+                    <h3>quick links</h3>
+                    <a href="#home"><i class="fas fa-arrow-right"></i> home</a>
+                    <a href="#about"><i class="fas fa-arrow-right"></i> about</a>
+                    <a href="#menu"><i class="fas fa-arrow-right"></i> menu</a>
+                    <a href="#review"><i class="fas fa-arrow-right"></i> review</a>
+                    <a href="#book"><i class="fas fa-arrow-right"></i> book</a>
+                </div>
+
+                <div class="box two">
+                    <h3>contact info</h3>
+                    <a href="#"><i class="fas fa-phone"></i> +62 888 888 888</a>
+                    <!-- <a href="#"><i class="fas fa-phone"></i> +111-222-3333</a> -->
+                    <a href="#"><i class="fas fa-envelope"></i> morningcoffee@gmail.com</a>
+                    <a href="#"><i class="fas fa-envelope"></i> Bogor, Indonesia</a>
+                </div>
+
+                <div class="box three">
+                    <h3>social media</h3>
+                    <a href="#"><i class="fab fa-facebook-f"></i> facebook</a>
+                    <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+                    <a href="#"><i class="fab fa-instagram"></i> instagram</a>
+                    <a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+                    <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+                </div>
+            </div>
+
+            <div class="credit">
+                created by <span>Morning <span class="ijo">Coffee</span></span> | all rights reserved
+            </div>
+        </section>
+
+        <!-- Modal Box Item Detail -->
+        <div class="modal" id="item-detail-modal">
+            <div class="modal-container">
+                <a href="#" class="close-icon"><i class="fa-solid fa-x"></i></a>
+                <div class="modal-content">
+                    <img src="image/produk/kopi1.jpg" alt="product 1" />
+                    <div class="product-content">
+                        <h3>Kopi</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptate nam ipsa, vitae quasi voluptatem magnam ab beatae illum iure doloribus nemo inventore cum
+                            necessitatibus.
+                        </p>
+                        <div class="bintang">
+                            <span class="material-icons active">star</span>
+                            <span class="material-icons active">star</span>
+                            <span class="material-icons active">star</span>
+                            <span class="material-icons active">star</span>
+                            <span class="material-icons">star_border</span>
+                        </div>
+                        <div class="nama">
+                            <h2>Kopi Jogging</h2>
+                        </div>
+                        <div class="price">
+                            <p>Rp.20.000</p>
+                        </div>
+                        <a href="#"><i class="fa-solid fa-cart-shopping"></i> <span>add to cart</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JS -->
+        <!-- SWIPER -->
+        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+        <!-- Custom JS File Link  -->
+        <script src="js/script.js"></script>
+        <script src="js/kategori.js"></script>
+        <script src="js/popup.js"></script>
+    </body>
+</html>
